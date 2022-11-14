@@ -22,8 +22,8 @@ namespace coffee_shop
             public double yourMoney = 0;
             public int Count = 0;
             public double Change = 0;
-            public string [] Bill = new string[16];
-            public double [] Cost = new double[16];
+            public string[] Bill = new string[16];
+            public double[] Cost = new double[16];
         }
         internal class CoffeeShop
         {
@@ -36,7 +36,7 @@ namespace coffee_shop
                 Console.Clear();
                 Console.WriteLine("-----------------------------------");
                 Console.WriteLine("     Our assortment ^-^\n");
-                Console.WriteLine("Coffe:\t\tToppings:\n" +
+                Console.WriteLine("Coffee:\t\tToppings:\n" +
                                   $"\nLatte - 0,5$\t Milk - 0,1$\n" +
                                   $"Rough - 0,9$\t Cream - 0,25$\n" +
                                   $"Americano - 0,3$ Sugar - 0,09$\n" +
@@ -117,7 +117,7 @@ namespace coffee_shop
                             l = false;
                             break;
                     }
-                    
+
                 }
                 Console.Clear();
                 Console.WriteLine("-----------------------------------");
@@ -137,23 +137,23 @@ namespace coffee_shop
                     Console.WriteLine("You don't have enough money, leave!");
                     Console.WriteLine("-----------------------------------");
                 }
-                else if(c.yourMoney == c.Price)
+                else if (c.yourMoney == c.Price)
                 {
                     Console.Clear();
                     Console.WriteLine("------------------------------------------------");
                     Console.WriteLine("Ho-ho, no change, thank you! Come to us again :)");
                     Console.WriteLine("------------------------------------------------");
                 }
-                else if(c.yourMoney > c.Price)
+                else if (c.yourMoney > c.Price)
                 {
                     Console.Clear();
                     c.Change = c.yourMoney - c.Price;
                     Console.WriteLine("------------------------------------------------");
-                    Console.WriteLine($"You gave: {c.yourMoney}, your change: {c.Change}\n" +
+                    Console.WriteLine($"You gave: {c.yourMoney}$, your change: {c.Change}$\n" +
                         $"Come to us again :)");
                     Console.WriteLine("------------------------------------------------");
                 }
-                
+
 
             }
             static void Main(string[] args)
