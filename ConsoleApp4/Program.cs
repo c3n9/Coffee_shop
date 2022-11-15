@@ -113,13 +113,15 @@ namespace coffee_shop
                             c.Count++;
                             Console.WriteLine("\nAnything else? Maybe toppings?\n");
                             break;
-                        default:
+                        case "No":
                             l = false;
+                            break;
+                        default:
+                            Console.WriteLine("\nI don't understand you. Try again.\n");
                             break;
                     }
 
                 }
-                Console.Clear();
                 Console.WriteLine("-----------------------------------");
                 Console.WriteLine("Your order:");
                 for (int i = 0; i < c.Count; i++)
@@ -127,34 +129,51 @@ namespace coffee_shop
                     Console.WriteLine($"{c.Bill[i]}:.................{c.Cost[i]}$");
                 }
                 Console.WriteLine($"\nTotal:.................{c.Price}$\n\n");
-                Console.Write("Enter the amount to pay for the order: ");
-                c.yourMoney = double.Parse(Console.ReadLine());
-                Console.WriteLine("-----------------------------------");
-                if (c.yourMoney < c.Price)
+                bool j = true;
+                while (j)
                 {
-                    Console.Clear();
-                    Console.WriteLine("-----------------------------------");
-                    Console.WriteLine("You don't have enough money, leave!");
-                    Console.WriteLine("-----------------------------------");
-                }
-                else if (c.yourMoney == c.Price)
-                {
-                    Console.Clear();
-                    Console.WriteLine("------------------------------------------------");
-                    Console.WriteLine("Ho-ho, no change, thank you! Come to us again :)");
-                    Console.WriteLine("------------------------------------------------");
-                }
-                else if (c.yourMoney > c.Price)
-                {
-                    Console.Clear();
-                    c.Change = c.yourMoney - c.Price;
-                    Console.WriteLine("------------------------------------------------");
-                    Console.WriteLine($"You gave: {c.yourMoney}$, your change: {c.Change}$\n" +
-                        $"Come to us again :)");
-                    Console.WriteLine("------------------------------------------------");
-                }
 
+                    Console.Write("Enter the amount to pay for the order: ");
+                    try
+                    {
+                        c.yourMoney = double.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Введи номинал!");
+                    }
+                    Console.WriteLine("-----------------------------------");
+                    if (c.yourMoney < c.Price)
+                    {
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("You don't have enough money, try again!");
+                        Console.WriteLine("-----------------------------------");
+                    }
+                    else if (c.yourMoney == c.Price)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("------------------------------------------------");
+                        Console.WriteLine("Ho-ho, no change, thank you! Come to us again :)");
+                        Console.WriteLine("------------------------------------------------");
+                        j = false;
+                    }
+                    else if (c.yourMoney > c.Price)
+                    {
+                        Console.Clear();
+                        c.Change = c.yourMoney - c.Price;
+                        Console.WriteLine("------------------------------------------------");
+                        Console.WriteLine($"You gave: {c.yourMoney}$, your change: {c.Change}$\n" +
+                            $"Come to us again :)");
+                        Console.WriteLine("------------------------------------------------");
+                        j = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nI don't understand you!!!!\n");
 
+                    }
+                } 
+                
             }
             static void Main(string[] args)
             {
